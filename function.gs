@@ -44,7 +44,7 @@ const MUSICS_AND_DIFF =
 async function UpdateIndividual(name, nameIndex, sheet) {
   const API_URL = "https://api.chunirec.net/2.0/records/showall.json?region=jp2&token=0cc61074c6f6ccf038b3c62be917be3ef317458be49bd3cd68c78a80b4d024b144db12e7f941a8c043f3ac8b4b0c610740e8960baf53f5469de414d6588fa6b5&user_name="
     + name;
-  var response;
+  let response;
   try {
     response = UrlFetchApp.fetch(API_URL);
   } catch {
@@ -93,7 +93,7 @@ function UpdateSheet() {
     const position = String.fromCharCode(65 + ID_COL)
       + String(BASE_ID_ROW + i);
     const name = sheet.getRange(position).getValue();
-    if (name == "") continue;
+    if (name === "") continue;
     UpdateIndividual(name, i, sheet);
   }
 }
